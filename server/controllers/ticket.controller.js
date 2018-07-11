@@ -29,7 +29,8 @@ ticket.post("/", (req, res) => {
         const { firstName, lastName } = guest;
         // Store Info in ticket
         Ticket.create({
-          guest: { firstName: firstName, lastName: lastName },
+          firstName: firstName,
+          lastName: lastName,
           issue: issue,
           folio: folio,
           ticket: ticketNumber
