@@ -1,3 +1,5 @@
+//ADD FOLIO SEARCH FUNCTIONALITY
+
 import React from "react";
 
 // Dependencies
@@ -21,7 +23,7 @@ export default class Search extends React.Component {
     // Make a request for a ticket given a ticket #
     // Ex fetch route: http://localhost:8080/ticket?ticket="12345"
     axios
-      .get(`https://jsonplaceholder.typicode.com/comments?postId=${ticket}`)
+      .get(`https://localhost:7000/api/v1/ticket?ticket=${ticket}`)
       .then(response => console.log(response))
       .catch(error => console.log(error));
   };

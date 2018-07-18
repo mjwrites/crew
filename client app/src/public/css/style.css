@@ -89,3 +89,7 @@
 .queue {
   margin-left: 150px;
 }
+
+.queue .tickets {
+  display: -webkit-box;
+}

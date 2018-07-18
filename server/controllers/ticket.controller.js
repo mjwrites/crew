@@ -6,11 +6,23 @@ const Guest = require("../models/guest.model");
 
 const ticket = express.Router();
 
-// http://localhost:8080/api/v1/ticket?ticketNumber="123"
+// http://localhost:8080/api/v1/ticket?ticket="123"
 // http://api.carnival.com:8080/api/v1/ticket
 ticket.get("/", (req, res) => {
+  //extract number from request
   const { ticketNumber } = req.query;
-  console.log("here");
+  //get ticket from db
+  Ticket.findOne({ ticketNumber: ticketNumber })
+    .then(ticket => res.send({ ticket: ticket }))
+    .catch(e => console.log(e.message));
+});
+
+// Get all tickets from DB
+// http://localhost:7000/api/v1/ticket/all
+ticket.get("/all", (req, res) => {
+  Ticket.find({})
+    .then(tickets => res.send({ success: true, tickets: tickets }))
+    .catch(e => res.send({ success: false, message: e.message }));
 });
 
 // http://localhost:8080/api/v1/ticket?ticketNumber=123&issue="MY ISSUE"&folio="321"

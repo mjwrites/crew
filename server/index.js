@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+//Use cors for cross domain
+var cors = require("cors");
+
 // Import dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -15,6 +18,7 @@ const VERSION = process.env.APP_VERSION;
 require("./db/db.config");
 
 // Express middleware
+server.use(cors());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 

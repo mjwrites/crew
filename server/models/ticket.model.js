@@ -6,7 +6,7 @@ module.exports = mongoose.model(
     firstName: { type: String },
     lastName: { type: String },
     issue: { type: String },
-    folio: { type: String, unique: true },
-    ticket: { type: String }
+    folio: { type: String },
+    ticket: { type: String, unique: true }
   })
 );
