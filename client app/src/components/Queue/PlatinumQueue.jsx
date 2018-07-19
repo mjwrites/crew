@@ -38,10 +38,10 @@ export default class PlatinumQueue extends React.Component {
       return (
         <div className="tickets" key={index}>
           <p>First Name: {ticket.firstName} </p>
-          <p> Last Name: {ticket.lastName} </p>
-          <p> folio: {ticket.folio} </p>
-          <p> ticketNumber: {ticket.ticket} </p>
-          <p> issue: {ticket.issue} </p>
+          <p>Last Name: {ticket.lastName} </p>
+          <p>Folio: {ticket.folio} </p>
+          <p>TicketNumber: {ticket.ticket} </p>
+          <p>Issue: {ticket.issue} </p>
         </div>
       );
     });
@@ -49,6 +49,7 @@ export default class PlatinumQueue extends React.Component {
   render() {
     // Extract tickets from state
     const { tickets } = this.state;
+
     return (
       // if (tickets.length > 0){ render X}
       // else render Y

@@ -2,11 +2,29 @@ import React from "react";
 
 // Dependencies
 import { Nav, NavItem, NavLink } from "reactstrap";
+import axios from "axios";
+
+//images
+import clock from "../../public/images/clock.png";
+import blueguests from "../../public/images/blueguests.png";
 
 export default class Sidebar extends React.Component {
+  state = { tickets: [] };
+
+  fetchTickets = async () => {
+    const url = "http://localhost:7000/api/v1/ticket/all";
+    const { data } = await axios.get(url);
+    this.setState({ tickets: data.tickets });
+  };
+
+  componentDidMount() {
+    this.fetchTickets;
+  }
+
+  // ticketCount = {tickets.length};
   render() {
     return (
-      <Nav vertical className="sidebar">
+      <Nav horizontal className="sidebar">
         <NavItem>
           <NavLink onClick={() => this.props.setQueue("Standard")}>
             <svg viewBox="0 0 30 19" fill="none ">
@@ -31,6 +49,18 @@ export default class Sidebar extends React.Component {
             <p>Platinum</p>
           </NavLink>
         </NavItem>
+        <div>
+          <NavItem>
+            <img src={clock} />
+            <p> 15 min avg wait time</p>
+          </NavItem>
+        </div>
+        <div>
+          <NavItem>
+            <img src={blueguests} />
+            {/* <p> {ticketCount}people in line</p> */}
+          </NavItem>
+        </div>
       </Nav>
     );
   }

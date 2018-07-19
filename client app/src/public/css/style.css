@@ -9,7 +9,7 @@
 
 /* Main app wrapper */
 .main {
-  padding: 20px;
+  padding: 5px;
 }
 
 /* Nav */
@@ -61,11 +61,11 @@
 /* Sidebar */
 .sidebar {
   background-color: var(--main-gray);
-  width: fit-content;
+  width: 99%;
   position: absolute;
-  height: 78%;
+  height: 20%;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .sidebar .nav-item .nav-link {
@@ -85,9 +85,15 @@
   height: 35px;
 }
 
+.sidebar img {
+  height: 65%;
+  vertical-align: text-top;
+}
+
 /* Queue */
 .queue {
-  margin-left: 150px;
+  margin-left: 15px;
+  margin-top: 85px;
 }
 
 .queue .tickets {
