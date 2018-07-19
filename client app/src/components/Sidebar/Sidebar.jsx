@@ -49,7 +49,7 @@ export default class Sidebar extends React.Component {
             <p>Platinum</p>
           </NavLink>
         </NavItem>
-        <div>
+        <div className="time">
           <NavItem>
             <img src={clock} />
             <p> 15 min avg wait time</p>

@@ -63,7 +63,7 @@
   background-color: var(--main-gray);
   width: 99%;
   position: absolute;
-  height: 20%;
+  height: 70px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   padding-top: 10px;
 }
@@ -88,6 +88,13 @@
 .sidebar img {
   height: 65%;
   vertical-align: text-top;
+}
+
+.time p {
+  position: relative;
+  top: -50px;
+  left: 85px;
+  width: 90px;
 }
 
 /* Queue */

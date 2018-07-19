@@ -1,4 +1,5 @@
 import React from "react";
+import QueueItem from "./QueueItem";
 
 //Dependencies
 import axios from "axios";
@@ -37,6 +38,13 @@ export default class StandardQueue extends React.Component {
     tickets.map((ticket, index) => {
       return (
         <div className="tickets" key={index}>
+          <QueueItem
+            firstName={"Christine"}
+            lastName={"Duffy"}
+            folio={"1457"}
+            ticketNumber={"157"}
+            issue={"test the auto"}
+          />
           <p>First Name: {ticket.firstName} </p>
           <p>Last Name: {ticket.lastName} </p>
           <p>Folio: {ticket.folio} </p>

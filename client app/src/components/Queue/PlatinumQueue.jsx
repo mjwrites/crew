@@ -8,7 +8,7 @@ export default class PlatinumQueue extends React.Component {
   // setting tickets to be initially
   state = { tickets: [] };
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetchTickets();
   }
 
