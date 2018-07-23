@@ -7,6 +7,13 @@ module.exports = mongoose.model(
     lastName: { type: String },
     issue: { type: String },
     folio: { type: String },
-    ticket: { type: String, unique: true }
+    ticket: { type: String, unique: true },
+    active: { type: String, default: true },
+    loyalty: { type: String, defalt: "standard" },
+    photo: {
+      type: String,
+      default:
+        "https://projects.scpr.org/static-files/_v4/images/default_avatar.png"
+    }
   })
 );

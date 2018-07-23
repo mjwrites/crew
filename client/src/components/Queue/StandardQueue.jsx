@@ -1,5 +1,6 @@
 import React from "react";
-import QueueItem from "./QueueItem";
+
+import { Container, Row, Col } from "reactstrap";
 
 //Dependencies
 import axios from "axios";
@@ -36,15 +37,32 @@ export default class StandardQueue extends React.Component {
   // .map will loop through array
   renderTickets = tickets =>
     tickets.map((ticket, index) => {
+      console.log(ticket);
       return (
-        <div className="tickets" key={index}>
-          <QueueItem
-            firstName={"Christine"}
-            lastName={"Duffy"}
-            folio={"1457"}
-            ticketNumber={"157"}
-            issue={"test the auto"}
-          />
+        <div className="ticket">
+          <Row key={ticket.ticket}>
+            <Col xs="2">
+              <span>
+                <b># {index + 1}</b>
+              </span>
+            </Col>
+            <Col xs="2">
+              <img src={ticket.photo} alt="Guest photo" />
+            </Col>
+            <Col xs="2">
+              <span className="name">
+                {ticket.firstName} {ticket.lastName}
+              </span>
+            </Col>
+
+            {/* <span className="folio">{ticket.folio}</span> */}
+            {/* <span className="ticketNumber">{ticket.ticket}</span> */}
+            <Col xs="6">
+              <span className="issue">
+                <b>Reason for visit:</b> {ticket.issue}
+              </span>
+            </Col>
+          </Row>
         </div>
       );
     });

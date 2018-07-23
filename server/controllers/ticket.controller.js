@@ -25,34 +25,41 @@ ticket.get("/all", (req, res) => {
     .catch(e => res.send({ success: false, message: e.message }));
 });
 
-// http://localhost:8080/api/v1/ticket?ticketNumber=123&issue="MY ISSUE"&folio="321"
-ticket.post("/", (req, res) => {
+// http://localhost:7000/api/v1/ticket?ticketNumber=123&issue=MY ISSUE&folio=321
+ticket.post("/", async (req, res) => {
   const { ticketNumber, issue, folio } = req.query;
 
   // Call GUEST DB to retrieve INFO using "folio"
   // If found extract info and create TICKET
   // Else return error
-  Guest.findOne({ folio: folio })
-    .then(guest => {
-      if (guest.length <= 0) {
-        res.send({ success: false, message: `Folio ${folio} not found` });
-      } else {
-        // extract guest INFO
-        const { firstName, lastName } = guest;
-        // Store Info in ticket
-        Ticket.create({
-          firstName: firstName,
-          lastName: lastName,
-          issue: issue,
-          folio: folio,
-          ticket: ticketNumber
-        })
-          .then(guest => res.send(guest))
-          .catch(e => res.send(e.message));
-      }
-      console.log(guest);
-    })
-    .catch(e => res.send({ success: false, message: e.message }));
+
+  try {
+    const guest = await Guest.findOne({ folio: folio });
+
+    // Check if valid guest
+    if (guest) {
+      // Extract from guest response above
+      const { firstName, lastName, photo } = guest;
+      // Store Info in ticket
+      await Ticket.create({
+        firstName: firstName,
+        lastName: lastName,
+        issue: issue,
+        folio: folio,
+        ticket: ticketNumber,
+        photo: photo
+      });
+
+      res.send({ success: true, guest: guest });
+    } else {
+      res.send({
+        success: false,
+        message: `Unable to find gues based on the folio #${folio} provided`
+      });
+    }
+  } catch (e) {
+    res.send({ success: false, message: e.message });
+  }
 });
 
 module.exports = ticket;

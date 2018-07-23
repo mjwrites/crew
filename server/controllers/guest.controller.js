@@ -9,6 +9,11 @@ guest.get("/", (req, res) => {
   console.log("here");
 });
 
+/**
+ * Example request
+ * http://localhost:7000/api/v1/guest?firstName=John&lastName=Doe&folio=4321&room=123
+ */
+
 guest.post("/", (req, res) => {
   const { firstName, lastName, folio, room } = req.query;
 

@@ -32,7 +32,12 @@ export default class Search extends React.Component {
     return (
       <Form onSubmit={this.searchTicket}>
         <InputGroup>
-          <Input type="text" placeholder="Search ticket" name="ticket" />
+          <Input
+            type="text"
+            placeholder="Search ticket"
+            name="ticket"
+            required="true"
+          />
           <InputGroupAddon addonType="append">
             <Button>
               <svg
