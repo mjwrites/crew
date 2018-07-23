@@ -45,11 +45,6 @@ export default class StandardQueue extends React.Component {
             ticketNumber={"157"}
             issue={"test the auto"}
           />
-          <p>First Name: {ticket.firstName} </p>
-          <p>Last Name: {ticket.lastName} </p>
-          <p>Folio: {ticket.folio} </p>
-          <p>TicketNumber: {ticket.ticket} </p>
-          <p>Issue: {ticket.issue} </p>
         </div>
       );
     });

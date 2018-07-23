@@ -37,11 +37,11 @@ export default class PlatinumQueue extends React.Component {
     tickets.map((ticket, index) => {
       return (
         <div className="tickets" key={index}>
-          <p>First Name: {ticket.firstName} </p>
-          <p>Last Name: {ticket.lastName} </p>
-          <p>Folio: {ticket.folio} </p>
-          <p>TicketNumber: {ticket.ticket} </p>
-          <p>Issue: {ticket.issue} </p>
+          <p>{ticket.firstName} </p>
+          <p>{ticket.lastName} </p>
+          <p>{ticket.folio} </p>
+          <p>{ticket.ticket} </p>
+          <p>{ticket.issue} </p>
         </div>
       );
     });

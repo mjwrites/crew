@@ -20,7 +20,12 @@ class App extends React.Component {
 
   // Will display current queue view
   renderQueue = queue => {
+    //network call for data
+
+    //decide what data you need
     if (queue === "Platinum") {
+      //assign data you need to variable
+      //pass in variable as prop
       return <PlatinumQueue />;
     } else if (queue === "Standard") {
       return <StandardQueue />;

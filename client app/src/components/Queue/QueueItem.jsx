@@ -21,6 +21,14 @@ export default class QueueItem extends React.Component {
     });
   }
   render() {
-    return <h1>Searching for {this.state.firstName}</h1>;
+    return (
+      <div>
+        <p>{this.state.firstName}</p>
+        <p>{this.state.lastName}</p>
+        <p>{this.state.issue}</p>
+        <p>{this.state.ticketNumber}</p>
+        <p>{this.state.folio}</p>
+      </div>
+    );
   }
 }
