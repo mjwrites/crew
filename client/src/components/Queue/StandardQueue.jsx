@@ -6,10 +6,9 @@ import { Container, Row, Col } from "reactstrap";
 import axios from "axios";
 import { Button } from "reactstrap";
 export default class StandardQueue extends React.Component {
-  //completed button click function
-  completeTicket = e => {
-    e.preventDefault();
-  };
+  completeTicket(ticket) {
+    //do stuff here
+  }
   // Component state
   // setting tickets to be initially
   state = { tickets: [] };
@@ -67,7 +66,9 @@ export default class StandardQueue extends React.Component {
             </Col>
             <Col xs="2">
               <span className="completed">
-                <Button onClick={this.completeTicket}>COMPLETED</Button>
+                <Button onClick={this.completeTicket(ticket.ticket)}>
+                  COMPLETED
+                </Button>
               </span>
             </Col>
           </Row>
