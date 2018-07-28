@@ -14,19 +14,20 @@ guest.get("/", (req, res) => {
  * http://localhost:7000/api/v1/guest?firstName=John&lastName=Doe&folio=4321&room=123
  */
 
-guest.post("/", (req, res) => {
-  const { firstName, lastName, folio, room } = req.query;
-
+guest.post("/", (req, res) => {
+  const { firstName, lastName, folio, room, loyalty } = req.query;
+  
   Guest.create({
-    firstName: firstName,
-    lastName: lastName,
-    folio: folio,
-    room: room
+  firstName: firstName,
+  lastName: lastName,
+  folio: folio,
+  room: room,
+  loyalty: loyalty
   })
-    .then(guest => {
-      res.send({ success: true, message: "Guest created", guest: guest });
-    })
-    .catch(e => res.send(e.message));
-});
+  .then(guest => {
+  res.send(JSON.stringify({ success: true, message: "Guest created"}));
+  })
+  .catch(e => res.send(e.message));
+  }); 
 
 module.exports = guest;
