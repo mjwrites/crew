@@ -9,7 +9,7 @@ module.exports = mongoose.model(
     folio: { type: String },
     ticket: { type: String, unique: true },
     active: { type: String, default: true },
-    loyalty: { type: String, defalt: "standard" },
+    loyalty: { type: String },
     photo: {
       type: String,
       default:

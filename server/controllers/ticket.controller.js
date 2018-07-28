@@ -1,5 +1,5 @@
 const express = require("express");
-const axios = require ("axios");
+const axios = require("axios");
 
 // Import Ticket & GUEST DB schema
 const Ticket = require("../models/ticket.model");
@@ -7,27 +7,26 @@ const Guest = require("../models/guest.model");
 
 const ticket = express.Router();
 var index = 1;
-async function fetchTickets() {
-const url = "http://18.191.252.85:7000/api/v1/ticket/all";
+async function fetchTickets() {
+  const url = "http://localhost:7000/api/v1/ticket/all";
 
-// Object assign and extraction
-const { data } = await axios.get(url);
-var active = [];
-data.tickets.forEach(element => {
-  try {
-    if (element.active = true) {
-     active.push(element)
-     
-    } else {
-    alert(data.message);
+  // Object assign and extraction
+  const { data } = await axios.get(url);
+  var active = [];
+  data.tickets.forEach(element => {
+    try {
+      if ((element.active = true)) {
+        active.push(element);
+      } else {
+        alert(data.message);
+      }
+    } catch (e) {
+      alert(e.message);
     }
-    } catch (e) {
-    alert(e.message);
-    }
-});
-console.log(active.length);
-return active.length;
-}; 
+  });
+  console.log(active.length);
+  return active.length;
+}
 
 // http://localhost:8080/api/v1/ticket?ticket="123"
 // http://api.carnival.com:8080/api/v1/ticket
@@ -58,16 +57,13 @@ ticket.post("/", async (req, res) => {
   let currentPos = await fetchTickets();
   console.log(currentPos);
 
-
-
- 
   try {
     const guest = await Guest.findOne({ folio: folio });
 
     // Check if valid guest
     if (guest) {
       // Extract from guest response above
-      const { firstName, lastName, photo } = guest;
+      const { firstName, lastName, photo, loyalty } = guest;
       // Store Info in ticket
       await Ticket.create({
         firstName: firstName,
@@ -75,14 +71,19 @@ ticket.post("/", async (req, res) => {
         issue: issue,
         folio: folio,
         ticket: index,
-        photo: photo
+        photo: photo,
+        loyalty: loyalty
       });
-      
-      res.send({ success: true, linePos:String(currentPos), currentlyServing:'3' });
+
+      res.send({
+        success: true,
+        linePos: String(currentPos),
+        currentlyServing: "3"
+      });
     } else {
       res.send({
         success: false,
-        message: `Unable to find gues based on the folio #${folio} provided`
+        message: `Unable to find guest based on the folio #${folio} provided`
       });
     }
   } catch (e) {
@@ -94,9 +95,9 @@ ticket.post("/", async (req, res) => {
 ticket.get("/info", async (req, res) => {
   let lineLength = await fetchTickets();
   res.send({
-    lineLength:lineLength,
-    message:"Guests in Line"
-  })
+    lineLength: lineLength,
+    message: "Guests in Line"
+  });
 });
 
 module.exports = ticket;
