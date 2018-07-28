@@ -4,8 +4,12 @@ import { Container, Row, Col } from "reactstrap";
 
 //Dependencies
 import axios from "axios";
-
+import { Button } from "reactstrap";
 export default class StandardQueue extends React.Component {
+  //completed button click function
+  completeTicket = e => {
+    e.preventDefault();
+  };
   // Component state
   // setting tickets to be initially
   state = { tickets: [] };
@@ -54,12 +58,16 @@ export default class StandardQueue extends React.Component {
                 {ticket.firstName} {ticket.lastName}
               </span>
             </Col>
-
             {/* <span className="folio">{ticket.folio}</span> */}
             {/* <span className="ticketNumber">{ticket.ticket}</span> */}
-            <Col xs="6">
+            <Col xs="4">
               <span className="issue">
                 <b>Reason for visit:</b> {ticket.issue}
+              </span>
+            </Col>
+            <Col xs="2">
+              <span className="completed">
+                <Button onClick={this.completeTicket}>COMPLETED</Button>
               </span>
             </Col>
           </Row>

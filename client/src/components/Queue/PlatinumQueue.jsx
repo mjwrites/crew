@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col } from "reactstrap";
 
 //Dependencies
 import axios from "axios";
@@ -35,13 +36,32 @@ export default class PlatinumQueue extends React.Component {
   // .map will loop through array
   renderTickets = tickets =>
     tickets.map((ticket, index) => {
+      console.log(ticket);
       return (
-        <div className="tickets" key={index}>
-          <p>{ticket.firstName} </p>
-          <p>{ticket.lastName} </p>
-          <p>{ticket.folio} </p>
-          <p>{ticket.ticket} </p>
-          <p>{ticket.issue} </p>
+        <div className="ticket">
+          <Row key={ticket.ticket}>
+            <Col xs="2">
+              <span>
+                <b># {index + 1}</b>
+              </span>
+            </Col>
+            <Col xs="2">
+              <img src={ticket.photo} alt="Guest photo" />
+            </Col>
+            <Col xs="2">
+              <span className="name">
+                {ticket.firstName} {ticket.lastName}
+              </span>
+            </Col>
+
+            {/* <span className="folio">{ticket.folio}</span> */}
+            {/* <span className="ticketNumber">{ticket.ticket}</span> */}
+            <Col xs="6">
+              <span className="issue">
+                <b>Reason for visit:</b> {ticket.issue}
+              </span>
+            </Col>
+          </Row>
         </div>
       );
     });
