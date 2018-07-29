@@ -19,7 +19,8 @@ export default class Sidebar extends React.Component {
 
   // ticketCount = {tickets.length};
   render() {
-    const { history } = this.props;
+    const { history, ticketCount } = this.props;
+    let lineTime = ticketCount * 2.3;
     return (
       <Nav className="sidebar">
         <NavItem>
@@ -45,6 +46,13 @@ export default class Sidebar extends React.Component {
             </svg>
             <p>Platinum</p>
           </NavLink>
+        </NavItem>
+        <NavItem className="line-time">
+          <img src={require("../../public/images/clock.png")} />
+          <p>
+            <b>{lineTime}</b>
+            <br /> total line time
+          </p>
         </NavItem>
         {/* <div className="time">
           <NavItem>

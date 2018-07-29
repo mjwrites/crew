@@ -68,6 +68,14 @@
 
 .sidebar .nav-item .nav-link {
   display: flex;
+}
+
+.sidebar .nav-item .nav-link:hover {
+  cursor: pointer;
+}
+
+.sidebar .nav-item {
+  display: flex;
   text-decoration: none;
   color: #10549b;
 }
@@ -78,14 +86,19 @@
   font-weight: 400;
 }
 
+.sidebar .line-time {
+  width: 75%;
+  justify-content: flex-end;
+}
+
+.sidebar .line-time img {
+  height: 85% !important;
+  vertical-align: text-top;
+}
+
 .sidebar svg {
   width: 35px;
   height: 35px;
-}
-
-.sidebar img {
-  height: 65%;
-  vertical-align: text-top;
 }
 
 .time p {
