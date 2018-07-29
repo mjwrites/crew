@@ -6,7 +6,7 @@ const Ticket = require("../models/ticket.model");
 const Guest = require("../models/guest.model");
 
 const ticket = express.Router();
-var index = 1;
+
 async function fetchTickets() {
   const url = "http://localhost:7000/api/v1/ticket/all";
 
@@ -47,6 +47,18 @@ ticket.get("/all", (req, res) => {
     .catch(e => res.send({ success: false, message: e.message }));
 });
 
+ticket.get("/standard", (req, res) => {
+  Ticket.find({ loyalty: "Standard", active: "true" })
+    .then(tickets => res.send({ success: true, tickets: tickets }))
+    .catch(e => res.send({ success: false, message: e.message }));
+});
+
+ticket.get("/platinum", (req, res) => {
+  Ticket.find({ loyalty: "Platinum", active: "true" })
+    .then(tickets => res.send({ success: true, tickets: tickets }))
+    .catch(e => res.send({ success: false, message: e.message }));
+});
+
 // http://localhost:7000/api/v1/ticket?ticketNumber=123&issue=MY ISSUE&folio=321
 ticket.post("/", async (req, res) => {
   const { issue, folio } = req.query;
@@ -70,7 +82,9 @@ ticket.post("/", async (req, res) => {
         lastName: lastName,
         issue: issue,
         folio: folio,
-        ticket: index,
+        ticket: Math.random()
+          .toString(36)
+          .substr(2, 6),
         photo: photo,
         loyalty: loyalty
       });
@@ -89,15 +103,14 @@ ticket.post("/", async (req, res) => {
   } catch (e) {
     res.send({ success: false, message: e.message });
   }
-  index++;
 });
 
-ticket.get("/info", async (req, res) => {
-  let lineLength = await fetchTickets();
-  res.send({
-    lineLength: lineLength,
-    message: "Guests in Line"
-  });
+ticket.put("/complete", async (req, res) => {
+  //get ticket from request
+  let ticket = req.body.ticket;
+  console.log(ticket._id);
+  await Ticket.findByIdAndUpdate(ticket._id, { active: "false" });
+  res.send({ success: true });
 });
 
 module.exports = ticket;
