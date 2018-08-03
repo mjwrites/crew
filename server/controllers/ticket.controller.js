@@ -8,7 +8,7 @@ const Guest = require("../models/guest.model");
 const ticket = express.Router();
 
 async function fetchTickets() {
-  const url = "http://localhost:7000/api/v1/ticket/all";
+  const url = "http://18.222.218.96:7000/api/v1/ticket/all";
 
   // Object assign and extraction
   const { data } = await axios.get(url);
