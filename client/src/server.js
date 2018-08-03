@@ -4,7 +4,7 @@ var sql = require("mssql"); // MS Sql Server client
 
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
-server.listen(port);    
+server.listen(port);
 
 // const express = require("express");
 // const cors = require("cors");

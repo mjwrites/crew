@@ -12,7 +12,7 @@ let SidebarWithRouter = withRouter(Sidebar);
 
 export default class StandardQueue extends React.Component {
   completeTicket = async ticket => {
-    const url = "http://localhost:7000/api/v1/ticket/complete";
+    const url = "http://18.191.230.214:7000/api/v1/ticket/complete";
     const update = await axios.put(url, { ticket: ticket });
     this.fetchTickets();
   };
@@ -27,7 +27,7 @@ export default class StandardQueue extends React.Component {
   // Get tickets from API
   // Store them in state
   fetchTickets = async () => {
-    const url = "http://localhost:7000/api/v1/ticket/standard";
+    const url = "http://18.191.230.214:7000/api/v1/ticket/standard";
 
     // Object assign and extraction
     const { data } = await axios.get(url);

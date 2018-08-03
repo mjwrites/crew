@@ -86,12 +86,16 @@
   font-weight: 400;
 }
 
-.sidebar .line-time {
-  width: 75%;
+.sidebar .metrics {
+  width: 25%;
   justify-content: flex-end;
 }
+/* .sidebar .line-size {
+  width: 75%;
+  justify-content: flex-end;
+} */
 
-.sidebar .line-time img {
+.sidebar .metrics img {
   height: 85% !important;
   vertical-align: text-top;
 }

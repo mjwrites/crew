@@ -8,7 +8,7 @@ export default class Sidebar extends React.Component {
   state = { tickets: [] };
 
   fetchTickets = async () => {
-    const url = "http://localhost:7000/api/v1/ticket/all";
+    const url = "http://18.191.230.214:7000/api/v1/ticket/all";
     const { data } = await axios.get(url);
     this.setState({ tickets: data.tickets });
   };
@@ -20,7 +20,7 @@ export default class Sidebar extends React.Component {
   // ticketCount = {tickets.length};
   render() {
     const { history, ticketCount } = this.props;
-    let lineTime = ticketCount * 2.3;
+    let lineTime = Math.ceil(ticketCount * 2.3);
     return (
       <Nav className="sidebar">
         <NavItem>
@@ -47,13 +47,21 @@ export default class Sidebar extends React.Component {
             <p>Platinum</p>
           </NavLink>
         </NavItem>
-        <NavItem className="line-time">
+        <NavItem className="metrics">
+          <img src={require("../../public/images/blueguests.png")} />
+          <p>
+            <b>{ticketCount}</b>
+            <br /> people in line
+          </p>
+        </NavItem>
+        <NavItem className="metrics">
           <img src={require("../../public/images/clock.png")} />
           <p>
             <b>{lineTime}</b>
-            <br /> total line time
+            <br /> min total line time
           </p>
         </NavItem>
+
         {/* <div className="time">
           <NavItem>
             <img src={clock} />

@@ -23,7 +23,7 @@ export default class Search extends React.Component {
     // Make a request for a ticket given a ticket #
     // Ex fetch route: http://localhost:8080/ticket?ticket="12345"
     axios
-      .get(`https://localhost:7000/api/v1/ticket?ticket=${ticket}`)
+      .get(`https://18.191.230.214:7000/api/v1/ticket?ticket=${ticket}`)
       .then(response => console.log(response))
       .catch(error => console.log(error));
   };
